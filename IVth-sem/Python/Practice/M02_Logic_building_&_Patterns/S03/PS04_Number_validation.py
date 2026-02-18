@@ -19,5 +19,5 @@ print("perfect" if n == s else "not perfect")
 '''
 def factorial(n):
     if n < 0:
-        
+        print()
 
