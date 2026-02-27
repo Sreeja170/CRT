@@ -1,24 +1,24 @@
-def Student_Grade_System(name:str,n1: int,n2: int,n3: int) -> str:
-   avg = (n1 + n2 + n3) / 3
+def Student_Grade_System(name: str, n1: int, n2: int, n3: int) -> str:
+    avg = (n1 + n2 + n3) / 3
 
-    # Truncate to 2 decimal places (NOT round)
-    avg_truncated = int(avg * 100) / 100
+    # Round to 2 decimal places
+    avg = round(avg, 2)
 
-    # Format average:
-    # show one decimal if .0, else two decimals
-    if avg_truncated.is_integer():
-        avg_str = f"{avg_truncated:.1f}"
+    # Format average properly (remove unnecessary trailing zero)
+    if avg == int(avg):
+        avg_str = str(float(int(avg)))
     else:
-        avg_str = f"{avg_truncated:.2f}"
+        avg_str = str(avg)
 
-    # Pass / fail rule (based on tests)
-    status = "Pass" if avg_truncated >= 40 else "fail"
+    if avg >= 40:
+        status = "Pass"
+    else:
+        status = "fail"
 
     return f"Average grade: {avg_str}, Status: {status}"
 
 
-
 if __name__ == '__main__':
     name = input()
-    n1,n2,n3 = list(map(int,input().split()))
-    print(Student_Grade_System(name,n1,n2,n3))
+    n1, n2, n3 = list(map(int, input().split()))
+    print(Student_Grade_System(name, n1, n2, n3))
