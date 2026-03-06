@@ -1,19 +1,14 @@
 def Student_Grade_System(name: str, n1: int, n2: int, n3: int) -> str:
     avg = (n1 + n2 + n3) / 3
+    avg = int(avg*100) / 100
 
-    # Round to 2 decimal places
-    avg = round(avg, 2)
-
-    # Format average properly (remove unnecessary trailing zero)
-    if avg == int(avg):
-        avg_str = str(float(int(avg)))
+    
+    if avg.is_integer():
+        avg_str = f"{avg:.1f}"
     else:
-        avg_str = str(avg)
+        avg_str = f"{avg}"
 
-    if avg >= 40:
-        status = "Pass"
-    else:
-        status = "fail"
+    status = "Pass" if avg >= 40 else "fail"
 
     return f"Average grade: {avg_str}, Status: {status}"
 
